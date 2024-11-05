@@ -22,7 +22,7 @@ export const StakeContractInteraction = ({ address }) => {
     "ExampleExternalContract",
   )
   console.log("StakerContract?.addressStakerContract?.address", ExampleExternalContact)
-  
+
   const { balance: stakerContractBalance } = useAccountBalance(StakerContract?.address)
   const { balance: exampleExternalContractBalance } = useAccountBalance(
     ExampleExternalContact?.address,

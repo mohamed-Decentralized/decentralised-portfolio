@@ -1,16 +1,20 @@
-require("dotenv").config();
-require("@nomicfoundation/hardhat-ethers");
-require("@nomicfoundation/hardhat-chai-matchers");
-require("hardhat-gas-reporter");
-require("solidity-coverage");
-require("@nomicfoundation/hardhat-verify");
-require("hardhat-deploy");
-require("hardhat-deploy-ethers");
+require("dotenv").config()
+require("@nomicfoundation/hardhat-ethers")
+require("@nomicfoundation/hardhat-chai-matchers")
+require("hardhat-gas-reporter")
+require("solidity-coverage")
+require("@nomicfoundation/hardhat-verify")
+require("hardhat-deploy")
+require("hardhat-deploy-ethers")
 
-const providerApiKey = process.env.ALCHEMY_API_KEY || "oKxs-03sij-U_N0iOlrSsZFr29-IqbuF";
+const providerApiKey =
+  process.env.ALCHEMY_API_KEY || "oKxs-03sij-U_N0iOlrSsZFr29-IqbuF"
 const deployerPrivateKey =
-  process.env.DEPLOYER_PRIVATE_KEY ?? "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"; // 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
-const etherscanApiKey = process.env.ETHERSCAN_API_KEY || "DNXJA8RX2Q3VZ4URQIWP7Z68CJXQZSC6AW";
+  process.env.DEPLOYER_PRIVATE_KEY ??
+  "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80" // 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+
+const etherscanApiKey =
+  process.env.ETHERSCAN_API_KEY || "DNXJA8RX2Q3VZ4URQIWP7Z68CJXQZSC6AW"
 
 const config = {
   solidity: {
@@ -71,6 +75,6 @@ const config = {
   sourcify: {
     enabled: false,
   },
-};
+}
 
-module.exports = config;
+module.exports = config

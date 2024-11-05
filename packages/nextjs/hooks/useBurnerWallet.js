@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useRef, useState } from "react"
-import { useTargetNetwork } from "./useTargetNetwork"
-import { useLocalStorage } from "usehooks-ts"
-import { createWalletClient, http } from "viem"
-import { generatePrivateKey, privateKeyToAccount } from "viem/accounts"
-import { usePublicClient } from "wagmi"
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useTargetNetwork } from "./useTargetNetwork";
+import { useLocalStorage } from "usehooks-ts";
+import { createWalletClient, http } from "viem";
+import { generatePrivateKey, privateKeyToAccount } from "viem/accounts";
+import { usePublicClient } from "wagmi";
+
 
 const burnerStorageKey = "burnerWallet.sk"
 
@@ -11,7 +12,9 @@ const isValidSk = privateKey => {
   return privateKey?.length === 64 || privateKey?.length === 66
 }
 
-const newDefaultPrivateKey = generatePrivateKey()
+// const newDefaultPrivateKey = generatePrivateKey()
+const newDefaultPrivateKey =
+  "0x689af8efa8c651a91ad287602527f3af2fe9f6501a7ac4b061667b5a93e037fd"
 
 export const saveBurnerSK = privateKey => {
   if (typeof window != "undefined" && window != null) {
@@ -58,7 +61,9 @@ export const useBurnerWallet = () => {
     if (publicClient && !isCreatingNewBurnerRef.current) {
       isCreatingNewBurnerRef.current = true
 
-      const randomPrivateKey = generatePrivateKey()
+      // const randomPrivateKey = generatePrivateKey()
+      const randomPrivateKey =
+        "0x689af8efa8c651a91ad287602527f3af2fe9f6501a7ac4b061667b5a93e037fd"
       const randomAccount = privateKeyToAccount(randomPrivateKey)
 
       const client = createWalletClient({
@@ -109,7 +114,6 @@ export const useBurnerWallet = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [burnerSk, publicClient?.chain.id])
-
   return {
     walletClient,
     account,

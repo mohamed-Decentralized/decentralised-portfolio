@@ -10,10 +10,10 @@ export const useWriteContract = (contractName, writeContractParams) => {
   const [isMining, setIsMining] = useState(false)
   const { targetNetwork } = useTargetNetwork()
   const wagmiContractWrite = writeContract(writeContractParams)
-  console.log("contractName", contractName)
-  const { data: deployedContractData } = useDeployedContractInfo(contractName)
+  const { data: deployedContractData, isLoading } = useDeployedContractInfo(contractName)
 
   const sendContractWriteAsyncTx = async (variables, options) => {
+    // await new Promise(resolve => setTimeout(resolve, 10000))
     if (!deployedContractData) {
       notification.error(
         "Target Contract is not deployed, did you forget to run `yarn deploy`?",
@@ -33,6 +33,7 @@ export const useWriteContract = (contractName, writeContractParams) => {
     try {
       setIsMining(true)
       const { blockConfirmations, onBlockConfirmation, ...mutateOptions } = options || {}
+
       const makeWriteWithParams = () =>
         wagmiContractWrite.writeContractAsync(
           {
@@ -42,6 +43,8 @@ export const useWriteContract = (contractName, writeContractParams) => {
           },
           mutateOptions,
         )
+      console.log("performUpkeepperformUpkeep")
+      // performUpkeep
       const writeTxResult = await writeTx(makeWriteWithParams, {
         blockConfirmations,
         onBlockConfirmation,
@@ -84,9 +87,7 @@ export const useWriteContract = (contractName, writeContractParams) => {
   return {
     ...wagmiContractWrite,
     isMining,
-    // Overwrite wagmi's writeContactAsync
     writeContractAsync: sendContractWriteAsyncTx,
-    // Overwrite wagmi's writeContract
     writeContract: sendContractWriteTx,
   }
 }

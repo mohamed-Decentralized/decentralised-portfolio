@@ -1,10 +1,11 @@
-import { useState } from "react";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import { CheckCircleIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outline";
-import { displayTxResult } from "~~/app/debug/_components/contract";
+import { useState } from "react"
+import { CopyToClipboard } from "react-copy-to-clipboard"
+import { CheckCircleIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outline"
+import { displayTxResult } from "~~/app/debug/_components/contract"
 
 export const TxReceipt = txResult => {
-  const [txResultCopied, setTxResultCopied] = useState(false);
+  console.log("TX_RESULT:", txResult)
+  const [txResultCopied, setTxResultCopied] = useState(false)
 
   return (
     <div className="flex text-sm rounded-3xl peer-checked:rounded-b-none min-h-0 bg-secondary py-0">
@@ -18,10 +19,10 @@ export const TxReceipt = txResult => {
           <CopyToClipboard
             text={displayTxResult(txResult)}
             onCopy={() => {
-              setTxResultCopied(true);
+              setTxResultCopied(true)
               setTimeout(() => {
-                setTxResultCopied(false);
-              }, 800);
+                setTxResultCopied(false)
+              }, 800)
             }}
           >
             <DocumentDuplicateIcon
@@ -41,5 +42,5 @@ export const TxReceipt = txResult => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

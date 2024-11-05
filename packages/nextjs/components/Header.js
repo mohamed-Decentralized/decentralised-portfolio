@@ -1,13 +1,14 @@
 "use client"
 
-import React, { useCallback, useRef, useState } from "react"
+import { useCallback, useRef, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
   Bars3Icon,
   BoltIcon,
   BugAntIcon,
-  CircleStackIcon,
+  HomeIcon,
+  Squares2X2Icon,
 } from "@heroicons/react/24/outline"
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/eth"
 import { useOutsideClick } from "~~/hooks"
@@ -16,15 +17,12 @@ export const menuLinks = [
   {
     label: "Home",
     href: "/",
+    icon: <HomeIcon className="h-4 w-4" />,
   },
-  // {
-  //   label: "Token Vendor",
-  //   href: "/token-vendor",
-  //   icon: <CircleStackIcon className="h-4 w-4" />,
-  // },
   {
     label: "Apps",
     href: "/apps",
+    icon: <Squares2X2Icon className="h-4 w-4" />,
   },
   {
     label: "Events",

@@ -1,7 +1,7 @@
 import * as chains from "viem/chains"
 
 const config = {
-  targetNetworks: [chains.sepolia, chains.hardhat],
+  targetNetworks: [chains.hardhat],
   pollingInterval: 30000,
   websocket_url: "ws://127.0.0.1:8545",
   alchemyApiKey:
